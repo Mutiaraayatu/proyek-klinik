@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// Tabel akun staf klinik (admin/dokter) untuk login
+model User {
+  id        Int      @id @default(autoincrement())
+  nama      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+// Tabel data dokter
+model Dokter {
+  id           Int           @id @default(autoincrement())
+  nama         String
+  spesialisasi String
+  hariPraktik  String
+  createdAt    DateTime      @default(now())
+  pendaftaran  Pendaftaran[]
+}
+
+// Tabel pendaftaran pasien
+model Pendaftaran {
+  id            Int      @id @default(autoincrement())
+  namaPasien    String
+  noHp          String
+  keluhan       String
+  status        String   @default("Menunggu")
+  tanggalDaftar DateTime @default(now())
+  dokterId      Int
+  dokter        Dokter   @relation(fields: [dokterId], references: [id])
+}
