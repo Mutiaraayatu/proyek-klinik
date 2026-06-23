@@ -9,7 +9,6 @@ async function daftarAkun(formData: FormData) {
   const password = formData.get("password") as string;
   const role = formData.get("role") as string;
 
-  // Acak password supaya aman (tidak disimpan apa adanya)
   const passwordAman = await bcrypt.hash(password, 10);
 
   await prisma.user.create({
@@ -21,25 +20,43 @@ async function daftarAkun(formData: FormData) {
 
 export default function RegisterPage() {
   return (
-    <div className="max-w-md mx-auto p-8">
-      <h1 className="text-2xl font-bold mb-6">Daftar Akun Staf</h1>
+    <div className="min-h-screen flex items-center justify-center p-6">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-6">
+          <a href="/" className="text-sm text-blue-600 hover:underline">← Kembali ke beranda</a>
+          <h1 className="text-3xl font-bold mt-3 text-slate-800">Daftar Akun Staf</h1>
+          <p className="text-slate-500 mt-2">Buat akun untuk admin atau dokter.</p>
+        </div>
 
-      <form action={daftarAkun} className="bg-gray-50 border p-5 rounded-lg space-y-3">
-        <input name="nama" placeholder="Nama" required className="w-full border p-2 rounded" />
-        <input name="email" type="email" placeholder="Email" required className="w-full border p-2 rounded" />
-        <input name="password" type="password" placeholder="Password" required className="w-full border p-2 rounded" />
-        <select name="role" required className="w-full border p-2 rounded">
-          <option value="dokter">Dokter (hanya melihat)</option>
-          <option value="admin">Admin (akses penuh)</option>
-        </select>
-        <button type="submit" className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Daftar
-        </button>
-      </form>
+        <form action={daftarAkun} className="kartu space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Nama</label>
+            <input name="nama" placeholder="Nama lengkap" required className="input-form" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <input name="email" type="email" placeholder="email@klinik.com" required className="input-form" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
+            <input name="password" type="password" placeholder="••••••••" required className="input-form" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Peran</label>
+            <select name="role" required className="input-form">
+              <option value="dokter">Dokter (hanya melihat)</option>
+              <option value="admin">Admin (akses penuh)</option>
+            </select>
+          </div>
+          <button type="submit" className="btn-primary w-full text-base py-3">
+            Daftar
+          </button>
+        </form>
 
-      <p className="text-sm text-gray-600 mt-4">
-        Sudah punya akun? <a href="/login" className="text-blue-600 hover:underline">Login di sini</a>
-      </p>
+        <p className="text-sm text-slate-500 mt-5 text-center">
+          Sudah punya akun? <a href="/login" className="text-blue-600 hover:underline font-medium">Login di sini</a>
+        </p>
+      </div>
     </div>
   );
 }

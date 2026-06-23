@@ -32,6 +32,13 @@ async function hapusPendaftaran(formData: FormData) {
   revalidatePath("/pendaftaran");
 }
 
+// Memilih warna label sesuai status
+function kelasStatus(status: string) {
+  if (status === "Diperiksa") return "status-diperiksa";
+  if (status === "Selesai") return "status-selesai";
+  return "status-menunggu";
+}
+
 export default async function HalamanPendaftaran() {
   const session = await getSession();
   if (!session) {
@@ -46,40 +53,43 @@ export default async function HalamanPendaftaran() {
   });
 
   return (
-    <div>
+    <div className="min-h-screen">
       <NavStaf nama={session.nama} role={session.role} />
 
-      <div className="max-w-2xl mx-auto p-8 pt-0">
-        <h1 className="text-2xl font-bold mb-6">Antrian Pasien</h1>
+      <div className="max-w-2xl mx-auto p-6">
+        <h1 className="text-2xl font-bold mb-6 text-slate-800">Antrian Pasien</h1>
 
         {daftarPendaftaran.length === 0 ? (
-          <p className="text-gray-500">Belum ada pendaftaran.</p>
+          <p className="text-slate-500">Belum ada pendaftaran.</p>
         ) : (
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {daftarPendaftaran.map((p) => (
-              <li key={p.id} className="border p-3 rounded">
-                <p className="font-medium">{p.namaPasien}</p>
-                <p className="text-sm text-gray-600">{p.keluhan} · HP: {p.noHp}</p>
-                <p className="text-sm text-gray-600">
-                  Dokter: {p.dokter.nama} · Status: <span className="font-medium">{p.status}</span>
-                </p>
-                <p className="text-sm text-gray-500">
-                  Daftar: {p.tanggalDaftar.toLocaleString("id-ID", { dateStyle: "medium", timeStyle: "short" })}
-                </p>
+              <li key={p.id} className="kartu">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <p className="font-semibold text-slate-800">{p.namaPasien}</p>
+                    <p className="text-sm text-slate-500">{p.keluhan} · HP: {p.noHp}</p>
+                    <p className="text-sm text-slate-500">Dokter: {p.dokter.nama}</p>
+                    <p className="text-xs text-slate-400 mt-1">
+                      Daftar: {p.tanggalDaftar.toLocaleString("id-ID", { dateStyle: "medium", timeStyle: "short" })}
+                    </p>
+                  </div>
+                  <span className={kelasStatus(p.status)}>{p.status}</span>
+                </div>
 
                 {isAdmin && (
-                  <div className="flex items-center gap-3 mt-2">
+                  <div className="flex items-center gap-3 mt-3 pt-3 border-t">
                     {p.status !== "Selesai" && (
                       <form action={lanjutkanStatus}>
                         <input type="hidden" name="id" value={p.id} />
-                        <button type="submit" className="bg-green-600 text-white px-3 py-1 rounded text-sm hover:bg-green-700">
+                        <button type="submit" className="bg-green-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-green-700">
                           {p.status === "Menunggu" ? "Mulai Periksa" : "Tandai Selesai"}
                         </button>
                       </form>
                     )}
                     <form action={hapusPendaftaran}>
                       <input type="hidden" name="id" value={p.id} />
-                      <button type="submit" className="text-red-600 text-sm hover:underline">
+                      <button type="submit" className="text-red-600 text-sm font-medium hover:underline">
                         Hapus
                       </button>
                     </form>

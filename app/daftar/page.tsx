@@ -27,32 +27,49 @@ export default async function DaftarPublikPage({
   });
 
   return (
-    <div className="max-w-md mx-auto p-8">
-      <h1 className="text-2xl font-bold mb-2">Pendaftaran Pasien</h1>
-      <p className="text-gray-600 mb-6">Silakan isi data Anda untuk mendaftar konsultasi.</p>
-
-      {sukses && (
-        <div className="bg-green-100 text-green-800 p-4 rounded-lg mb-6">
-          Pendaftaran berhasil! Silakan datang sesuai jadwal dokter. Terima kasih.
+    <div className="min-h-screen flex items-center justify-center p-6">
+      <div className="max-w-md w-full">
+        <div className="text-center mb-6">
+          <a href="/" className="text-sm text-blue-600 hover:underline">← Kembali ke beranda</a>
+          <h1 className="text-3xl font-bold mt-3 text-slate-800">Pendaftaran Pasien</h1>
+          <p className="text-slate-500 mt-2">Isi data Anda untuk mendaftar konsultasi.</p>
         </div>
-      )}
 
-      <form action={daftarPasien} className="bg-gray-50 border p-5 rounded-lg space-y-3">
-        <input name="namaPasien" placeholder="Nama lengkap" required className="w-full border p-2 rounded" />
-        <input name="noHp" placeholder="Nomor HP" required className="w-full border p-2 rounded" />
-        <textarea name="keluhan" placeholder="Keluhan Anda" required className="w-full border p-2 rounded" />
-        <select name="dokterId" required className="w-full border p-2 rounded">
-          <option value="">-- Pilih Dokter --</option>
-          {daftarDokter.map((dokter) => (
-            <option key={dokter.id} value={dokter.id}>
-              {dokter.nama} ({dokter.spesialisasi}) - {dokter.hariPraktik}
-            </option>
-          ))}
-        </select>
-        <button type="submit" className="w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Daftar Sekarang
-        </button>
-      </form>
+        {sukses && (
+          <div className="bg-green-100 text-green-800 p-4 rounded-xl mb-6 text-center">
+            ✓ Pendaftaran berhasil! Silakan datang sesuai jadwal dokter. Terima kasih.
+          </div>
+        )}
+
+        <form action={daftarPasien} className="kartu space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap</label>
+            <input name="namaPasien" placeholder="Masukkan nama Anda" required className="input-form" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Nomor HP</label>
+            <input name="noHp" placeholder="Contoh: 0812xxxx" required className="input-form" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Keluhan</label>
+            <textarea name="keluhan" placeholder="Ceritakan keluhan Anda" required className="input-form" rows={3} />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-700 mb-1">Pilih Dokter</label>
+            <select name="dokterId" required className="input-form">
+              <option value="">-- Pilih Dokter --</option>
+              {daftarDokter.map((dokter) => (
+                <option key={dokter.id} value={dokter.id}>
+                  {dokter.nama} ({dokter.spesialisasi}) - {dokter.hariPraktik}
+                </option>
+              ))}
+            </select>
+          </div>
+          <button type="submit" className="btn-primary w-full text-base py-3">
+            Daftar Sekarang
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

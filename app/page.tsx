@@ -1,19 +1,27 @@
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-8">
+    <div className="min-h-screen flex items-center justify-center p-6">
       <div className="max-w-md w-full text-center">
-        <h1 className="text-4xl font-bold mb-3">Klinik Sehat Bersama</h1>
-        <p className="text-gray-600 mb-8">
-          Layanan kesehatan terpercaya. Daftar konsultasi dengan mudah.
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-100 text-white rounded-2xl text-3xl mb-5 shadow-lg">
+          🩺
+        </div>
+        <h1 className="text-4xl font-bold mb-3 text-slate-800">Klinik Sehat Bersama</h1>
+        <p className="text-slate-500 mb-8 leading-relaxed">
+          Layanan kesehatan terpercaya. Daftar konsultasi dengan dokter kami secara online, mudah dan tanpa antre lama.
         </p>
+
         <div className="space-y-3">
-          <a href="/daftar" className="block w-full bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700">
+          <a href="/daftar" className="btn-primary w-full text-base py-3">
             Daftar sebagai Pasien
           </a>
-          <a href="/login" className="block w-full bg-white border border-gray-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-100">
+          <a href="/login" className="btn-secondary w-full text-base py-3">
             Login Staf
           </a>
         </div>
+
+        <p className="text-sm text-slate-400 mt-10">
+          &copy; 2026 Klinik Sehat Bersama
+        </p>
       </div>
     </div>
   );
