@@ -35,8 +35,15 @@ export default async function LoginPage({
       <div className="max-w-md w-full">
         <div className="text-center mb-6">
           <a href="/" className="text-sm text-blue-600 hover:underline">← Kembali ke beranda</a>
-          <h1 className="text-3xl font-bold mt-3 text-slate-800">Login Staf</h1>
-          <p className="text-slate-500 mt-2">Masuk untuk mengelola data klinik.</p>
+          <div className="mt-4 mb-3 flex justify-center">
+            <span className="w-12 h-12 rounded-xl bg-teal-700 text-white flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+              </svg>
+            </span>
+          </div>
+          <h1 className="text-3xl font-bold text-teal-900">Login Staf</h1>
+          <p className="text-teal-700 mt-2">Masuk untuk mengelola data klinik.</p>
         </div>
 
         {error && (
@@ -52,7 +59,7 @@ export default async function LoginPage({
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
-            <input name="password" type="password" placeholder="••••••••" required className="input-form" />
+            <input name="password" type="password" placeholder="password" required className="input-form" />
           </div>
           <button type="submit" className="btn-primary w-full text-base py-3">
             Login

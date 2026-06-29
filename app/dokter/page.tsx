@@ -43,11 +43,11 @@ export default async function HalamanDokter() {
       <NavStaf nama={session.nama} role={session.role} />
 
       <div className="max-w-2xl mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-6 text-slate-800">Kelola Data Dokter</h1>
+        <h1 className="text-2xl font-bold mb-6 text-teal-900">Kelola Data Dokter</h1>
 
         {isAdmin && (
           <form action={tambahDokter} className="kartu space-y-4 mb-8">
-            <h2 className="font-semibold text-lg text-slate-800">Tambah Dokter</h2>
+            <h2 className="font-semibold text-lg text-teal-900">Tambah Dokter</h2>
             <input name="nama" placeholder="Nama dokter" required className="input-form" />
             <input name="spesialisasi" placeholder="Spesialisasi" required className="input-form" />
             <input name="hariPraktik" placeholder="Hari praktik (mis. Senin & Rabu)" required className="input-form" />
@@ -55,7 +55,7 @@ export default async function HalamanDokter() {
           </form>
         )}
 
-        <h2 className="font-semibold text-lg mb-3 text-slate-800">Daftar Dokter</h2>
+        <h2 className="font-semibold text-lg mb-3 text-teal-900">Daftar Dokter</h2>
         {daftarDokter.length === 0 ? (
           <p className="text-slate-500">Belum ada dokter.</p>
         ) : (
@@ -70,7 +70,7 @@ export default async function HalamanDokter() {
                 </div>
                 {isAdmin && (
                   <div className="flex gap-3 items-center">
-                    <a href={`/dokter/${dokter.id}/edit`} className="text-blue-600 text-sm font-medium hover:underline">
+                    <a href={`/dokter/${dokter.id}/edit`} className="text-teal-700 text-sm font-medium hover:underline">
                       Edit
                     </a>
                     <form action={hapusDokter}>

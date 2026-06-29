@@ -32,7 +32,6 @@ async function hapusPendaftaran(formData: FormData) {
   revalidatePath("/pendaftaran");
 }
 
-// Memilih warna label sesuai status
 function kelasStatus(status: string) {
   if (status === "Diperiksa") return "status-diperiksa";
   if (status === "Selesai") return "status-selesai";
@@ -57,7 +56,7 @@ export default async function HalamanPendaftaran() {
       <NavStaf nama={session.nama} role={session.role} />
 
       <div className="max-w-2xl mx-auto p-6">
-        <h1 className="text-2xl font-bold mb-6 text-slate-800">Antrian Pasien</h1>
+        <h1 className="text-2xl font-bold mb-6 text-teal-900">Antrian Pasien</h1>
 
         {daftarPendaftaran.length === 0 ? (
           <p className="text-slate-500">Belum ada pendaftaran.</p>
@@ -82,7 +81,7 @@ export default async function HalamanPendaftaran() {
                     {p.status !== "Selesai" && (
                       <form action={lanjutkanStatus}>
                         <input type="hidden" name="id" value={p.id} />
-                        <button type="submit" className="bg-green-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-green-700">
+                        <button type="submit" className="bg-teal-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-teal-800">
                           {p.status === "Menunggu" ? "Mulai Periksa" : "Tandai Selesai"}
                         </button>
                       </form>

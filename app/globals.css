@@ -31,9 +31,15 @@ body {
   color: #1e293b;
 }
 
-/* Tombol utama (biru) */
+/* ===== Tema Klinik Asy-Syifa ===== */
+body {
+  background-color: #f0fdfa;
+  color: #1e293b;
+}
+
+/* Tombol utama (teal) */
 .btn-primary {
-  background-color: #2563eb;
+  background-color: #0f766e;
   color: white;
   padding: 0.625rem 1.25rem;
   border-radius: 0.5rem;
@@ -42,14 +48,14 @@ body {
   display: inline-block;
 }
 .btn-primary:hover {
-  background-color: #1d4ed8;
+  background-color: #115e59;
 }
 
 /* Tombol kedua (putih) */
 .btn-secondary {
   background-color: white;
-  color: #1e293b;
-  border: 1px solid #cbd5e1;
+  color: #0f766e;
+  border: 1px solid #99f6e4;
   padding: 0.625rem 1.25rem;
   border-radius: 0.5rem;
   font-weight: 500;
@@ -57,7 +63,7 @@ body {
   display: inline-block;
 }
 .btn-secondary:hover {
-  background-color: #f1f5f9;
+  background-color: #f0fdfa;
 }
 
 /* Kartu */
@@ -79,11 +85,11 @@ body {
 }
 .input-form:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  border-color: #0f766e;
+  box-shadow: 0 0 0 2px rgba(15, 118, 110, 0.2);
 }
 
-/* Label status */
+/* Label status (tetap warna beda untuk membedakan) */
 .status-menunggu {
   background-color: #fef3c7;
   color: #92400e;

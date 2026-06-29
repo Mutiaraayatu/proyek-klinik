@@ -24,8 +24,8 @@ export default function RegisterPage() {
       <div className="max-w-md w-full">
         <div className="text-center mb-6">
           <a href="/" className="text-sm text-blue-600 hover:underline">← Kembali ke beranda</a>
-          <h1 className="text-3xl font-bold mt-3 text-slate-800">Daftar Akun Staf</h1>
-          <p className="text-slate-500 mt-2">Buat akun untuk admin atau dokter.</p>
+          <h1 className="text-3xl font-bold mt-3 text-teal-900">Daftar Akun Staf</h1>
+          <p className="text-teal-700 mt-2">Buat akun untuk admin atau dokter.</p>
         </div>
 
         <form action={daftarAkun} className="kartu space-y-4">
@@ -39,7 +39,7 @@ export default function RegisterPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
-            <input name="password" type="password" placeholder="••••••••" required className="input-form" />
+            <input name="password" type="password" placeholder="password" required className="input-form" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-1">Peran</label>
